@@ -11,10 +11,12 @@ int main() {
 	int player1EndPoint = 8;
 	int player2StartPoint = 0;
 	int player2EndPoint = 8;
-	int ballY = 5;
+	int ballY = 10;
 	int ballX = 1;
 	bool player1Shot;
 	bool player2Shot;
+	int player1Points = 0;
+	int player2Points = 0;
 
 	while (true) {
 
@@ -43,8 +45,6 @@ int main() {
 
 		for (size_t i = 0; i < 30; i++)
 		{
-			if (i >= player1StartPoint && i < player1EndPoint || i >= player2StartPoint && i < player2EndPoint || i >= ballY && i < ballY)
-			{
 				if (i >= player1StartPoint && i < player1EndPoint) {
 					cout << "++++";
 				}
@@ -123,9 +123,27 @@ int main() {
 						player1Shot = true;
 						player2Shot = false;
 					}
-					else if (ballX == 20) {
+					else if (!(i >= player1StartPoint && i < player1EndPoint) && ballX == 2){
+						player2Points++;
+						system("CLS");
+						cout << "Player 2 wins";
+						for (size_t j = 0; j < 7; j++)
+						{
+							cout << "                    " << endl;
+						}
+					}
+					if (ballX == 20) {
 						player1Shot = false;
 						player2Shot = true;
+					}
+					else if (!(i >= player2StartPoint && i < player2EndPoint) && ballX == 19) {
+						player1Points++;
+						system("CLS");
+						cout << "Player 1 wins";
+						for (size_t j = 0; j < 7; j++)
+						{
+							cout << "                    " << endl;
+						}
 					}
 					if (player1Shot) {
 						ballX++;
@@ -143,11 +161,9 @@ int main() {
 				else {
 					cout << endl;
 				}
-			}
-			else {
-				cout << endl;
-			}
 		}
+		cout << "Player 1 score: " << player1Points << endl;
+		cout << "Player 2 score: " << player2Points << endl;
 	}
 	system("pause>0");
 }
