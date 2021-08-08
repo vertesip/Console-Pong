@@ -17,36 +17,40 @@ int main() {
 	bool player2Shot;
 
 	while (true) {
-	
-	int player1pressedKey = 3;
-	int player2pressedKey = 3;
-	if (player1pressedKey || player2pressedKey > 0) {
-		system("CLS");
-	}
-	if (player1pressedKey == 's') {
-		player1StartPoint = player1StartPoint++;
-		player1EndPoint = player1EndPoint++;
-	}
-	else if (player1pressedKey == 'w') {
-		player1StartPoint = player1StartPoint--;
-		player1EndPoint = player1EndPoint--;
-	}
 
-	if (player2pressedKey == 'l') {
-		player2StartPoint = player2StartPoint++;
-		player2EndPoint = player2EndPoint++;
-	}
-	else if (player2pressedKey == 'o') {
-		player2StartPoint = player2StartPoint--;
-		player2EndPoint = player2EndPoint--;
-	}
+		int player1pressedKey = _getch();
+		int player2pressedKey = _getch();
+		if (player1pressedKey || player2pressedKey > 0) {
+			system("CLS");
+		}
+		if (player1pressedKey == 's') {
+			player1StartPoint = player1StartPoint++;
+			player1EndPoint = player1EndPoint++;
+		}
+		else if (player1pressedKey == 'w') {
+			player1StartPoint = player1StartPoint--;
+			player1EndPoint = player1EndPoint--;
+		}
 
-	for (size_t i = 0; i < 30; i++)
-	{
-		if (i >= player1StartPoint && i < player1EndPoint || i >= player2StartPoint && i < player2EndPoint)
+		if (player2pressedKey == 'l') {
+			player2StartPoint = player2StartPoint++;
+			player2EndPoint = player2EndPoint++;
+		}
+		else if (player2pressedKey == 'o') {
+			player2StartPoint = player2StartPoint--;
+			player2EndPoint = player2EndPoint--;
+		}
+
+		for (size_t i = 0; i < 30; i++)
 		{
-			if (i >= player1StartPoint && i < player1EndPoint) {
-				cout << "++++";
+			if (i >= player1StartPoint && i < player1EndPoint || i >= player2StartPoint && i < player2EndPoint || i >= ballY && i < ballY)
+			{
+				if (i >= player1StartPoint && i < player1EndPoint) {
+					cout << "++++";
+				}
+				else {
+					cout << "    ";
+				}
 				if (i == ballY)
 				{
 					switch (ballX)
@@ -123,38 +127,27 @@ int main() {
 						player1Shot = false;
 						player2Shot = true;
 					}
-
 					if (player1Shot) {
 						ballX++;
 					}
 					else if (player2Shot) {
 						ballX--;
 					}
-
-					
 				}
 				else {
 					cout << "                    ";
 				}
-				
-			}
-			else {
-				cout << "    ";
-				cout << "                    ";
-			}
-			
-			if (i >= player2StartPoint && i < player2EndPoint) {
-				cout << "++++" << endl;
+				if (i >= player2StartPoint && i < player2EndPoint) {
+					cout << "++++" << endl;
+				}
+				else {
+					cout << endl;
+				}
 			}
 			else {
 				cout << endl;
 			}
-	
 		}
-		else {
-			cout << endl;
-		}
-	}
 	}
 	system("pause>0");
 }
