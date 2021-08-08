@@ -11,12 +11,15 @@ int main() {
 	int player1EndPoint = 8;
 	int player2StartPoint = 0;
 	int player2EndPoint = 8;
-	int ball = 5;
+	int ballY = 5;
+	int ballX = 1;
+	bool player1Shot;
+	bool player2Shot;
 
 	while (true) {
 	
-	int player1pressedKey = _getch();
-	int player2pressedKey = _getch();
+	int player1pressedKey = 3;
+	int player2pressedKey = 3;
 	if (player1pressedKey || player2pressedKey > 0) {
 		system("CLS");
 	}
@@ -44,11 +47,100 @@ int main() {
 		{
 			if (i >= player1StartPoint && i < player1EndPoint) {
 				cout << "++++";
-				cout << "                                                            ";
+				if (i == ballY)
+				{
+					switch (ballX)
+					{
+					case 1:
+						cout << "*                   ";
+						break;
+					case 2:
+						cout << " *                  ";
+						break;
+					case 3:
+						cout << "  *                 ";
+						break;
+					case 4:
+						cout << "   *                ";
+						break;
+					case 5:
+						cout << "    *               ";
+						break;
+					case 6:
+						cout << "     *              ";
+						break;
+					case 7:
+						cout << "      *             ";
+						break;
+					case 8:
+						cout << "       *            ";
+						break;
+					case 9:
+						cout << "        *           ";
+						break;
+					case 10:
+						cout << "         *          ";
+						break;
+					case 11:
+						cout << "          *         ";
+						break;
+					case 12:
+						cout << "           *        ";
+						break;
+					case 13:
+						cout << "            *       ";
+						break;
+					case 14:
+						cout << "             *      ";
+						break;
+					case 15:
+						cout << "              *     ";
+						break;
+					case 16:
+						cout << "               *    ";
+						break;
+					case 17:
+						cout << "                *   ";
+						break;
+					case 18:
+						cout << "                 *  ";
+						break;
+					case 19:
+						cout << "                  * ";
+						break;
+					case 20:
+						cout << "                   *";
+						break;
+					default:
+						cout << "                    ";
+						break;
+					}
+					if (ballX == 1) {
+						player1Shot = true;
+						player2Shot = false;
+					}
+					else if (ballX == 20) {
+						player1Shot = false;
+						player2Shot = true;
+					}
+
+					if (player1Shot) {
+						ballX++;
+					}
+					else if (player2Shot) {
+						ballX--;
+					}
+
+					
+				}
+				else {
+					cout << "                    ";
+				}
+				
 			}
 			else {
 				cout << "    ";
-				cout << "                                                            ";
+				cout << "                    ";
 			}
 			
 			if (i >= player2StartPoint && i < player2EndPoint) {
